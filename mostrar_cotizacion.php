@@ -4,7 +4,7 @@ $serverName = "kepler.database.windows.net";
 $connectionOptions = array(
     "Database" => "Kepler_DB",
     "Uid" => "kepler_2412",
-    "PWD" => "13120071P4ssw0rd",
+    "PWD" => "N>Vs&SGNu36v?$d",
     "Encrypt" => true
 );
 
@@ -17,15 +17,29 @@ if ($conn === false) {
 // Obtener el ID del cliente
 $cliente_id = $_GET['cliente_id'];
 
-// Consultar los datos del cliente y las cotizaciones
-$query = "
-SELECT C.nombres_apellidos, C.ciudad, C.direccion, C.celular, P.nombre_producto, CO.cantidad, P.precio_unitario, (CO.cantidad * P.precio_unitario) AS total
-FROM Clientes C
-JOIN Cotizaciones CO ON C.cliente_id = CO.cliente_id
-JOIN Productos P ON CO.producto_id = P.producto_id
-WHERE C.cliente_id = ?
+// Consultar los datos del cliente
+$clienteQuery = "
+    SELECT nombres_apellidos, ciudad, direccion, celular
+    FROM Clientes
+    WHERE cliente_id = ?
 ";
+$paramsCliente = array($cliente_id);
+$getCliente = sqlsrv_query($conn, $clienteQuery, $paramsCliente);
 
+if ($getCliente === false) {
+    die(print_r(sqlsrv_errors(), true));
+}
+
+// Obtener los datos del cliente
+$cliente = sqlsrv_fetch_array($getCliente, SQLSRV_FETCH_ASSOC);
+
+// Consultar los detalles de la cotización
+$query = "
+    SELECT P.nombre_producto, CO.cantidad, P.precio_unitario, CO.total
+    FROM Cotizaciones CO
+    JOIN Productos P ON CO.producto_id = P.producto_id
+    WHERE CO.cliente_id = ?
+";
 $params = array($cliente_id);
 $results = sqlsrv_query($conn, $query, $params);
 
@@ -44,6 +58,15 @@ if ($results === false) {
 </head>
 <body>
     <h1>Resumen de la Cotización</h1>
+
+    <!-- Mostrar la información del cliente en el encabezado -->
+    <div>
+        <h2>Información del Cliente</h2>
+        <p><strong>Nombres y Apellidos:</strong> <?php echo $cliente['nombres_apellidos']; ?></p>
+        <p><strong>Ciudad:</strong> <?php echo $cliente['ciudad']; ?></p>
+        <p><strong>Dirección:</strong> <?php echo $cliente['direccion']; ?></p>
+        <p><strong>Celular:</strong> <?php echo $cliente['celular']; ?></p>
+    </div>
 
     <table border="1">
         <tr>
