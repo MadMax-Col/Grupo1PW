@@ -4,7 +4,7 @@ $serverName = "kepler.database.windows.net";
 $connectionOptions = array(
     "Database" => "Kepler_DB",
     "Uid" => "kepler_2412",
-    "PWD" => "N>Vs&SGNu36v?$d",
+    "PWD" => "13120071P4ssw0rd",
     "Encrypt" => true
 );
 
