@@ -1,17 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta descripción para SEO -->
-    <meta name="description" content="Contáctanos para más información.">
-    <!-- Título de la página -->
-    <title>Contáctenos</title>
-    <!-- Enlace al archivo CSS externo -->
+    <title>Diseña tu cuento</title>
     <link rel="stylesheet" href="Styles.css">
-    <!-- Enlace a la biblioteca Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
 <body>
     <!-- Sección de encabezado -->
     <header>
@@ -67,47 +62,39 @@
             </nav>   
         </div>
     </header>
+    
+<div class="Container-cuento">
+    <h1>Diseña tu cuento</h1>
+    <form id="cuentoForm">
+        <label for="nombres">Nombres y Apellidos:</label>
+        <input type="text" id="nombres" required><br><br>
 
-    <!-- Contenido principal -->
-    <main class="main-content">
-        <!-- Sección de información de la tienda -->
-        <section class="container store-info">
-            <h1 class="heading-1">Estamos para ti.</h1>
-            <br>
-            <br>
-            <p> <font size = "4"> 
+        <label for="apodo">Apodo:</label>
+        <input type="text" id="apodo" required><br><br>
 
-                "En Calzamod, valoramos la opinión de nuestros clientes y estamos aquí para ayudarte. Si tienes alguna pregunta,   
-                necesitas asistencia o deseas compartir tu experiencia, no dudes en ponerte en contacto con nosotros. Nuestro equipo de soporte está disponible
-                para brindarte la mejor atención posible. Puedes comunicarte con nosotros a través de teléfono,
-                correo electrónico o visitarnos en nuestras oficinas. ¡Esperamos saber de ti pronto!
-            <br>
-            <br>
-            <!-- Imagen representativa de la tienda -->
-            <div class="Img-cals">
-                <img src="Img/Calzamod.jpg" alt="Tienda Calzamod" >
-            </div> 
-            
-            <br>
+        <label for="colorCabello">Color de Cabello:</label>
+        <input type="text" id="colorCabello" required><br><br>
 
-            <!-- Sección de redes sociales -->
-            <div class="redes sociales">
-                <a href="https://wa.me/573108454473" target="_blank"></a>
-            </div>
-        </section>
+        <label for="colorOjos">Color de Ojos:</label>
+        <input type="text" id="colorOjos" required><br><br>
 
-        <!-- Sección de contacto -->
-        <section class="container contact">
-            <h1 class="heading-1">Contáctenos</h1><br> <br>
-            <p>PBX: (+57) 604 605 15 35</p>
-        
-            <!-- Enlaces a medios de contacto -->
-            <p>WhatsApp: <a href="https://wa.me/573108454473" target="_blank" > <i class="bi bi-whatsapp"></i> +57 310 845 4473</a>
-            </p>
-            <p>Celular: <a href="tel:+573108454473"><i class="bi bi-telephone-fill"></i>   +57 310 845 4473</a></p>
-            <p>Dirección: <a href="https://www.google.com/maps/search/?api=1&query=Carrera+43A,+Cl.+7+Sur+%23170,+Medellín,+El+Poblado" target="_blank"> <i class="bi bi-geo-alt-fill"></i>  Centro Comercial Santafé, local 2122 Medellín, El Poblado</a></p>
-        </section>
-    </main>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" required><br><br>
+
+        <label for="hobby">Hobby (Solo uno):</label>
+        <input type="text" id="hobby" required><br><br>
+
+        <button type="submit">Continuar</button>
+    </form>
+
+
+    <h2>Tu cuento:</h2>
+    <div class="container-cuento" id="cuento"></div>
+
+
+    <script src="script.js"></script>
+</div>
+    
 
     <!-- Sección de pie de página -->
     <footer class="footer">
@@ -116,7 +103,6 @@
                 <p>
                     Calzamod Company &copy; 2024
                 </p>
-    
                 <!-- Imagen de métodos de pago aceptados -->
                 <img src="img/payment.png" alt="Pagos">
             </div>
@@ -125,6 +111,5 @@
 
     <!-- Enlace al script de FontAwesome para iconos -->
     <script src="https://kit.fontawesome.com/96260bb030.js" crossorigin="anonymous"></script>
-
 </body>
 </html>
